@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawBehindDesktopIcons", "DrawBehindDesktopIcons.csproj", "{E17AB476-3721-4A88-BC7C-D151AD0F3794}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandleAnimBackgroundSvc", "..\HandleAnimBackgroundSvc\HandleAnimBackgroundSvc.csproj", "{20171B81-5A7E-4ECE-BDFE-3FB206F427CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{E17AB476-3721-4A88-BC7C-D151AD0F3794}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E17AB476-3721-4A88-BC7C-D151AD0F3794}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E17AB476-3721-4A88-BC7C-D151AD0F3794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20171B81-5A7E-4ECE-BDFE-3FB206F427CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20171B81-5A7E-4ECE-BDFE-3FB206F427CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20171B81-5A7E-4ECE-BDFE-3FB206F427CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20171B81-5A7E-4ECE-BDFE-3FB206F427CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24ECB535-4CE7-4E93-95EE-33C461D580A2}
 	EndGlobalSection
 EndGlobal
