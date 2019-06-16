@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawBehindDesktopIcons", "DrawBehindDesktopIcons.csproj", "{E17AB476-3721-4A88-BC7C-D151AD0F3794}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawBehindDesktopIcons", "DrawBehindDesktopIcons\DrawBehindDesktopIcons.csproj", "{E17AB476-3721-4A88-BC7C-D151AD0F3794}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandleAnimBackgroundSvc", "..\HandleAnimBackgroundSvc\HandleAnimBackgroundSvc.csproj", "{20171B81-5A7E-4ECE-BDFE-3FB206F427CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandleAnimBackgroundSvc", "HandleAnimBackgroundSvc\HandleAnimBackgroundSvc.csproj", "{20171B81-5A7E-4ECE-BDFE-3FB206F427CE}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AnimBackgroundSetup", "AnimBackgroundSetup\AnimBackgroundSetup.vdproj", "{69F5BB3F-2C7D-4420-9AAC-1A79EF1126CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,8 @@ Global
 		{20171B81-5A7E-4ECE-BDFE-3FB206F427CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20171B81-5A7E-4ECE-BDFE-3FB206F427CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20171B81-5A7E-4ECE-BDFE-3FB206F427CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69F5BB3F-2C7D-4420-9AAC-1A79EF1126CE}.Debug|Any CPU.ActiveCfg = Debug
+		{69F5BB3F-2C7D-4420-9AAC-1A79EF1126CE}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
