@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.ServiceProcess;
 
@@ -24,21 +25,33 @@ namespace Toolkit
 
             var folder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             folder = folder.Replace("\\", "\\\\");
-            var path = "\"" + folder + "\\\\" + "DrawBehindDesktopIcons.exe\\" + "\"";
+            var path = "\"" + folder + "\\\\" + "DrawBehindDesktopIcons.exe" + "\"";
+
+
             try
             {
+                var curExecDir = Directory.GetCurrentDirectory();
+                var dirp = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                File.WriteAllText("test.log", "time:" + DateTime.Now + "\n");
+                File.AppendAllText("test.log", "exec:" + curExecDir + "\n");
+                File.AppendAllText("test.log", "path:" + path + "\n");
+                File.AppendAllText("test.log", "dirp:" + dirp + "\n");
 
-            ApplicationLoader.StartProcessAndBypassUAC(path, out procInfo);
+                Directory.SetCurrentDirectory(dirp);
+                _pid = ApplicationLoader.StartProcessAndBypassUAC(dirp, path, out procInfo);
+                File.AppendAllText("test.log", "_pid:" + _pid + "\n");
+
             }
             catch (Exception e)
             {
-
-            File.WriteAllText("test.log", e.ToString());
+                File.AppendAllText("test.log", e.ToString() + "\n");
             }
         }
-
+        private uint _pid;
         protected override void OnStop()
         {
+            File.AppendAllText("test.log", "kill:" + (int)_pid + "\n");
+            Process.GetProcessById((int)_pid).Kill();
         }
     }
 }

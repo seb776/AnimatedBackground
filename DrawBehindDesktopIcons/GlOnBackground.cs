@@ -14,8 +14,9 @@ namespace DrawBehindDesktopIcons
 {
     public class GlOnBackground
     {
-        DeviceContext _deviceContext;
-        uint _program;
+        private DeviceContext _deviceContext;
+        private uint _program;
+        private Point _screenResolution;
 
         public GlOnBackground(Stream shader)
         {
@@ -44,6 +45,9 @@ namespace DrawBehindDesktopIcons
 
 
             IntPtr workerw = Utils.Windows.GetWindowsBackgroundHandle();
+
+            W32.GetWindowRect(workerw, ref size);
+            _screenResolution = new Point(size.Width, size.Height);
 
             var pfd = new PIXELFORMATDESCRIPTOR
             {
@@ -74,8 +78,8 @@ namespace DrawBehindDesktopIcons
             var cPar = new CreateParams();
             cPar.X = 0;
             cPar.Y = 0;
-            cPar.Width = 1920 * 3;
-            cPar.Height = 1080;
+            cPar.Width = _screenResolution.X;
+            cPar.Height = _screenResolution.Y;
             cPar.Style = Windows.WS_CHILD | Windows.WS_VISIBLE | Windows.WS_CLIPSIBLINGS | Windows.WS_CLIPCHILDREN;
             cPar.Parent = workerw;
             var nativeWin = new NativeWindow();
@@ -103,9 +107,6 @@ namespace DrawBehindDesktopIcons
             //Gl.CheckErrors();
             //W32.wglMakeCurrent(hdc, IntPtr.Zero);
 
-            W32.GetWindowRect(workerw, ref size);
-            int width = size.Width;// / 3;
-            int height = size.Height;
 
             //var glContext = W32.wglCreateContext(hdc);
             //var errCode = Gl.GetError();
@@ -142,14 +143,14 @@ namespace DrawBehindDesktopIcons
             Gl.UseProgram(_program);
         }
 
-        public void Render(float time, Point resolution)
+        public void Render(float time)
         {
             var timeLoc = Gl.GetUniformLocation(_program, "time");
             Gl.Uniform1(timeLoc, time);
 
             var resolutionLoc = Gl.GetUniformLocation(_program, "resolution");
             //Gl.UNIFORM
-            Gl.Uniform2(resolutionLoc, (float)resolution.X, (float)resolution.Y);
+            Gl.Uniform2(resolutionLoc, (float)_screenResolution.X, (float)_screenResolution.Y);
 
 
             OpenGL.Gl.Rect(-1, -1, 1, 1);

@@ -93,11 +93,15 @@ namespace Toolkit
 
         [DllImport("kernel32.dll")]
         static extern uint WTSGetActiveConsoleSessionId();
+        [DllImport("kernel32.dll")]
+        extern static ulong GetLastError();
+
+        //Kernel32.lib
 
         [DllImport("advapi32.dll", EntryPoint = "CreateProcessAsUser", SetLastError = true, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public extern static bool CreateProcessAsUser(IntPtr hToken, String lpApplicationName, String lpCommandLine, ref SECURITY_ATTRIBUTES lpProcessAttributes,
-            ref SECURITY_ATTRIBUTES lpThreadAttributes, bool bInheritHandle, int dwCreationFlags, IntPtr lpEnvironment,
-            String lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
+                    ref SECURITY_ATTRIBUTES lpThreadAttributes, bool bInheritHandle, int dwCreationFlags, IntPtr lpEnvironment,
+                    String lpCurrentDirectory, ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
 
         [DllImport("kernel32.dll")]
         static extern bool ProcessIdToSessionId(uint dwProcessId, ref uint pSessionId);
@@ -121,10 +125,10 @@ namespace Toolkit
         /// <param name="applicationName">The name of the application to launch</param>
         /// <param name="procInfo">Process information regarding the launched application that gets returned to the caller</param>
         /// <returns></returns>
-        public static bool StartProcessAndBypassUAC(String applicationName, out PROCESS_INFORMATION procInfo)
+        public static uint StartProcessAndBypassUAC(String appFolder, String applicationName, out PROCESS_INFORMATION procInfo)
         {
             uint winlogonPid = 0;
-            IntPtr hUserTokenDup = IntPtr.Zero, hPToken = IntPtr.Zero, hProcess = IntPtr.Zero;            
+            IntPtr hUserTokenDup = IntPtr.Zero, hPToken = IntPtr.Zero, hProcess = IntPtr.Zero;
             procInfo = new PROCESS_INFORMATION();
 
             // obtain the currently active session id; every logged on user in the system has a unique session id
@@ -148,7 +152,6 @@ namespace Toolkit
             {
                 CloseHandle(hProcess);
                 throw new Exception("l150");
-                return false;
             }
 
             // Security attibute structure used in DuplicateTokenEx and CreateProcessAsUser
@@ -166,7 +169,6 @@ namespace Toolkit
                 CloseHandle(hPToken);
                 throw new Exception("l167");
 
-                return false;
             }
 
             // By default CreateProcessAsUser creates a process on a non-interactive window station, meaning
@@ -189,21 +191,22 @@ namespace Toolkit
                                             false,                  // handles are not inheritable
                                             dwCreationFlags,        // creation flags
                                             IntPtr.Zero,            // pointer to new environment block 
-                                            null,                   // name of current directory 
+                                            appFolder,                   // name of current directory 
                                             ref si,                 // pointer to STARTUPINFO structure
                                             out procInfo            // receives information about new process
                                             );
-
+            
             // invalidate the handles
             CloseHandle(hProcess);
             CloseHandle(hPToken);
             CloseHandle(hUserTokenDup);
             if (!result)
             {
-                throw new Exception("end");
+                ulong err = GetLastError();
+                throw new Exception("end " + result + ":" + err);
 
             }
-            return result; // return the result
+            return procInfo.dwProcessId; // return the result
         }
 
     }

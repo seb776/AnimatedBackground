@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,14 +18,31 @@ namespace DrawBehindDesktopIcons
 {
     class Program
     {
-        static void Main(string[] args)
+        [StructLayout(LayoutKind.Sequential)]
+        public struct NativeMessage
+        {
+            public IntPtr handle;
+            public uint msg;
+            public IntPtr wParam;
+            public IntPtr lParam;
+            public uint time;
+            public System.Drawing.Point p;
+        }
+
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool PeekMessage(out NativeMessage lpMsg, HandleRef hWnd, uint wMsgFilterMin,
+   uint wMsgFilterMax, uint wRemoveMsg);
+
+        private static void Worker(object num)
         {
             GlOnBackground backgroundRenderer = new GlOnBackground(File.Open("shader2.glsl", FileMode.Open, FileAccess.Read));
 
             bool alive = true;
             var timer = new System.Timers.Timer(10000.0);
             timer.AutoReset = false;
-            timer.Elapsed += (_, __) => { alive = false; };
+            //timer.Elapsed += (_, __) => { alive = false; };
             timer.Start();
             var stopWatch = new Stopwatch();
 
@@ -32,10 +50,19 @@ namespace DrawBehindDesktopIcons
 
             while (alive)
             {
-                backgroundRenderer.Render((float)stopWatch.Elapsed.TotalSeconds, new Point(1920*3,1080));
+                backgroundRenderer.Render((float)stopWatch.Elapsed.TotalSeconds);
                 Thread.Sleep((int)(1000.0f / 60.0f));
-
+                NativeMessage nativeMsg = new NativeMessage();
+                PeekMessage(out nativeMsg, new HandleRef(), 0, 0, 1);
             }
+        }
+
+        static void Main(string[] args)
+        {
+            Worker(null);
+            //Thread t = new Thread(new ParameterizedThreadStart(Worker));
+            //t.Start()
+            return;
             //}));
             //thread.Start();
             //glShaderSource(shader, 1, (const GLchar*const*)&_shaderCode, &len);
