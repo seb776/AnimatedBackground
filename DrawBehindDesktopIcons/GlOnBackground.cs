@@ -47,6 +47,8 @@ namespace DrawBehindDesktopIcons
             IntPtr workerw = Utils.Windows.GetWindowsBackgroundHandle();
 
             W32.GetWindowRect(workerw, ref size);
+            size.Width = (int)(size.Width * 1.25F);
+            size.Height = (int)(size.Height * 1.25F);
             _screenResolution = new Point(size.Width, size.Height);
 
             var pfd = new PIXELFORMATDESCRIPTOR

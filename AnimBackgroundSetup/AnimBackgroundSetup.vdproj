@@ -21,7 +21,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_62A659764DB73AA25396BBB0E26879C9"
+        "MsmKey" = "8:_16EBE0326ABE4FEF8ECC53941EADD511"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_40371EB01946C0E930212449F35B095E"
+        "OwnerKey" = "8:_4427E570AD32328797671266F415428F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_40371EB01946C0E930212449F35B095E"
+        "OwnerKey" = "8:_7D9D8058EFA443AA8C29F483C1E6F8F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4427E570AD32328797671266F415428F"
         "OwnerKey" = "8:_7D9D8058EFA443AA8C29F483C1E6F8F5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -39,18 +57,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B732A4279A4199D6F14391C2114F7BE6"
-        "OwnerKey" = "8:_7D9D8058EFA443AA8C29F483C1E6F8F5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B732A4279A4199D6F14391C2114F7BE6"
-        "OwnerKey" = "8:_62A659764DB73AA25396BBB0E26879C9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_DE2A62BDB74A41C0A720B3A0479E4E2C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -64,13 +70,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_62A659764DB73AA25396BBB0E26879C9"
+        "OwnerKey" = "8:_4427E570AD32328797671266F415428F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B732A4279A4199D6F14391C2114F7BE6"
+        "OwnerKey" = "8:_40371EB01946C0E930212449F35B095E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -136,6 +142,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -253,14 +267,65 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_62A659764DB73AA25396BBB0E26879C9"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_16EBE0326ABE4FEF8ECC53941EADD511"
+            {
+            "SourcePath" = "8:..\\DrawBehindDesktopIcons\\Shader3.glsl"
+            "TargetName" = "8:Shader3.glsl"
+            "Tag" = "8:"
+            "Folder" = "8:_74533D38E7694A2893770096C9E338E0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_40371EB01946C0E930212449F35B095E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:OpenGL.Net, Version=0.8.4.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_40371EB01946C0E930212449F35B095E"
+                    {
+                    "Name" = "8:OpenGL.Net.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:OpenGL.Net.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_74533D38E7694A2893770096C9E338E0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4427E570AD32328797671266F415428F"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:DrawBehindDesktopIcons, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_62A659764DB73AA25396BBB0E26879C9"
+                    "_4427E570AD32328797671266F415428F"
                     {
                     "Name" = "8:DrawBehindDesktopIcons.exe"
                     "Attributes" = "3:512"
@@ -302,37 +367,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B732A4279A4199D6F14391C2114F7BE6"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OpenGL.Net, Version=0.8.4.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B732A4279A4199D6F14391C2114F7BE6"
-                    {
-                    "Name" = "8:OpenGL.Net.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:OpenGL.Net.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_74533D38E7694A2893770096C9E338E0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DE2A62BDB74A41C0A720B3A0479E4E2C"
@@ -412,7 +446,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AnimBackgroundSetup"
         "ProductCode" = "8:{81044406-26AD-4001-A6F5-5AC5D5652162}"
-        "PackageCode" = "8:{410ADD06-181F-491E-8EE2-968BD203F898}"
+        "PackageCode" = "8:{0F1CE6F6-FC10-461B-B73A-CDDA419EBF27}"
         "UpgradeCode" = "8:{E641BB4B-A7ED-4164-BBF9-BCB7476CD736}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -545,7 +579,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_8C2A76B452464290B2A1133DEE8E480C"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Terminé"
+                    "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -582,7 +616,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_B4AEBE986D6C4BC98D22C6A8829EF21D"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progression"
+                    "DisplayName" = "8:Progress"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -626,7 +660,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_01EFB2E2D428427EBB96EDACD009F65D"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Dossier d'installation"
+                    "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -661,7 +695,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_05705EDA8F29498C9728DFB803897118"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Bienvenue"
+                    "DisplayName" = "8:Welcome"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -709,7 +743,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_A163530086A94989A859192748E642D7"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirmer l'installation"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -746,7 +780,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_3109F5D251FF4AF087894835D498323D"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirmer l'installation"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -768,7 +802,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_AC3B4BB2024A4856BF039B30837CDD2F"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Bienvenue"
+                    "DisplayName" = "8:Welcome"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -816,7 +850,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_AD7837E5D96B4F51AB237FD377E4F84F"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Dossier d'installation"
+                    "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -847,7 +881,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_F89B398881AC45A5AC0FEE316F061059"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Terminé"
+                    "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -891,7 +925,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_0296A45E4CA54837B8D05B272877CF89"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progression"
+                    "DisplayName" = "8:Progress"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
