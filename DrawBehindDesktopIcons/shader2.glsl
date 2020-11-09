@@ -103,5 +103,6 @@ void main() {
   float str1 = renderStars(cuv,1.0*spd, 3.0, 1.0);
   vec3 outCol = 0.5*(vec3(1.0)-sat(mix(highlightRed, redStr, str1)));
   vec3 outCol2 = 0.5*vec3(highlightRed)*renderStars(cuv,2.0*spd, 0.7, 3.53);
-  gl_FragColor = vec4(bg+outCol+noise+outCol2, 0.0);
+  vec3 outCol3 = bg+outCol+noise+outCol2;
+  gl_FragColor = vec4(outCol3, length(outCol3));
 }

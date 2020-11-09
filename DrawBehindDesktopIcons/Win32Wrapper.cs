@@ -14,6 +14,35 @@ namespace DrawBehindDesktopIcons
     public class W32
     {
         #region z0rg additions
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 4)]
+        public class MONITORINFOEX
+        {
+            public int cbSize = Marshal.SizeOf(typeof(MONITORINFOEX));
+            public RECT rcMonitor = new RECT();
+            public RECT rcWork = new RECT();
+            public int dwFlags = 0;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
+            public char[] szDevice = new char[32];
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINTSTRUCT
+        {
+            public int x;
+            public int y;
+            public POINTSTRUCT(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+        }
+
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern IntPtr MonitorFromWindow(IntPtr windowHandle, uint dwFlags); // MONITOR_DEFAULTTOPRIMARY = 1
+        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        public static extern bool GetMonitorInfo(IntPtr hmonitor, [In, Out]MONITORINFOEX info);
+
+
         [DllImport("user32.dll")]
         public static extern bool GetWindowRect(IntPtr hwnd, ref RECT rectangle);
 
