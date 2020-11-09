@@ -37,7 +37,7 @@ namespace DrawBehindDesktopIcons
 
         private static void Worker(object num)
         {
-            GlOnBackground backgroundRenderer = new GlOnBackground(File.Open("shader2.glsl", FileMode.Open, FileAccess.Read));
+            GlOnBackground backgroundRenderer = new GlOnBackground(File.Open("Shader3.glsl", FileMode.Open, FileAccess.Read));
 
             bool alive = true;
             var timer = new System.Timers.Timer(10000.0);
