@@ -38,6 +38,8 @@ namespace DrawBehindDesktopIcons
             return (infoLog.ToString());
         }
 
+        IntPtr _workerw;
+
         private void _setupContext(string shaderCode)
         {
             int screenCount = 1;
@@ -82,16 +84,27 @@ namespace DrawBehindDesktopIcons
             cPar.Y = 0;
             cPar.Width = _screenResolution.X;
             cPar.Height = _screenResolution.Y;
-            cPar.Style = Windows.WS_CHILD | Windows.WS_VISIBLE | Windows.WS_CLIPSIBLINGS | Windows.WS_CLIPCHILDREN;
-            cPar.Parent = workerw;
+            cPar.Style = /*Windows.WS_CHILD | */Windows.WS_VISIBLE;// | Windows.WS_CLIPSIBLINGS | Windows.WS_CLIPCHILDREN;
+                                                                   //cPar.Parent = workerw; // to get back to winbackground and rollback child just above
+
+        // for trnasparency
+        //https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-alphablend?redirectedfrom=MSDN 
+        //https://www.google.com/search?q=window+api+opengl+transparent&rlz=1C1GCEA_enFR829FR829&oq=win+api+opengl+transp&aqs=chrome.1.69i57j33.7066j0j7&sourceid=chrome&ie=UTF-8
             var nativeWin = new NativeWindow();
             nativeWin.CreateHandle(cPar);
             var subWinDC = W32.GetDC(nativeWin.Handle);
 
+            var monitor = W32.MonitorFromWindow(workerw, 1);
+            var monitorInfos = new W32.MONITORINFOEX();
+            W32.GetMonitorInfo(monitor, monitorInfos);
+            //W32.SetWindowPos(workerw, (IntPtr)(-1), 0, 0, monitorInfos.rcMonitor.Right, monitorInfos.rcMonitor.Bottom, W32.SetWindowPosFlags.ShowWindow);
+            _workerw = workerw;
+            W32.SetWindowPos(workerw, (IntPtr)(-1), 0, 0, 0, 0, W32.SetWindowPosFlags.NoMove | W32.SetWindowPosFlags.NoSize); // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowpos?redirectedfrom=MSDN
+            //Windows.PrintVisibleWindowHandles(2);
             int iPxlFmt = OpenGL.Wgl.ChoosePixelFormat(subWinDC, ref pfd);
             OpenGL.Wgl.SetPixelFormat(subWinDC, iPxlFmt, ref pfd);
 
-            W32.SetParent(nativeWin.Handle, workerw);
+            //W32.SetParent(nativeWin.Handle, workerw);
             _deviceContext = DeviceContext.Create(IntPtr.Zero, nativeWin.Handle);
             //var pixFmt = new DevicePixelFormat(32);
             //deviceContext.ChoosePixelFormat(pixFmt);
@@ -144,9 +157,10 @@ namespace DrawBehindDesktopIcons
 
             Gl.UseProgram(_program);
         }
-
+        int iLol = 0;
         public void Render(float time)
         {
+
             var timeLoc = Gl.GetUniformLocation(_program, "time");
             Gl.Uniform1(timeLoc, time);
 
@@ -158,6 +172,12 @@ namespace DrawBehindDesktopIcons
             OpenGL.Gl.Rect(-1, -1, 1, 1);
             //OpenGL.Wgl.swap
             _deviceContext.SwapBuffers();
+
+            if ((iLol % 100) == 0)
+            W32.SetWindowPos(_workerw, (IntPtr)(0), 0, 0, 0, 0, W32.SetWindowPosFlags.NoMove | W32.SetWindowPosFlags.NoSize | W32.SetWindowPosFlags.ShowWindow); // https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowpos?redirectedfrom=MSDN
+
+
+            iLol++;
         }
     }
 }

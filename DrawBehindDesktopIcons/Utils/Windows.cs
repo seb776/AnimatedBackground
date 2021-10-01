@@ -12,6 +12,11 @@ namespace DrawBehindDesktopIcons.Utils
         public static int WS_CLIPSIBLINGS = 0x04000000;
         public static int WS_CLIPCHILDREN = 0x02000000;
 
+        public static IntPtr GetScreenHandle()
+        {
+            return IntPtr.Zero;
+        }
+
         public static IntPtr GetWindowsBackgroundHandle()
         {
 
@@ -26,6 +31,7 @@ namespace DrawBehindDesktopIcons.Utils
 
             // Fetch the Progman window
             IntPtr progman = W32.FindWindow("Progman", null);
+            //IntPtr progman = W32.GetDesktopWindow();
 
             IntPtr result = IntPtr.Zero;
 
@@ -76,6 +82,8 @@ namespace DrawBehindDesktopIcons.Utils
 
                 return true;
             }), IntPtr.Zero);
+            //W32.MonitorFromWindow()
+            //W32.SetWindowPos(workerw, (IntPtr)(-1), 0, 0, 100, 100, W32.SetWindowPosFlags.ShowWindow);
             return workerw;
         }
         static void PrintVisibleWindowHandles(IntPtr hwnd, int maxLevel = -1, int level = 0)
@@ -102,7 +110,7 @@ namespace DrawBehindDesktopIcons.Utils
                 }), IntPtr.Zero);
             }
         }
-        static void PrintVisibleWindowHandles(int maxLevel = -1)
+        public static void PrintVisibleWindowHandles(int maxLevel = -1)
         {
             // Enumerates all existing top window handles. This includes open and visible windows, as well as invisible windows.
             W32.EnumWindows(new W32.EnumWindowsProc((tophandle, topparamhandle) =>
