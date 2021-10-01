@@ -40,7 +40,7 @@ namespace DrawBehindDesktopIcons
 
         private void _setupContext(string shaderCode)
         {
-            int screenCount = 3;
+            int screenCount = 1;
             var size = new W32.RECT();
 
 
